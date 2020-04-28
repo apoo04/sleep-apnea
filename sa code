@@ -1,0 +1,20 @@
+"pip install tensorflow-gpu==2.0.0-beta0",
+    "pip install librosa",
+    "pip install noisereduce",
+    "pip install soundfile",
+
+]
+
+import sys, subprocess
+
+def run_subprocess_command(cmd):
+    # run the command
+    process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
+    # print the output
+    for line in process.stdout:
+        print(line.decode().strip())
+
+IN_COLAB = "google.colab" in sys.modules
+if IN_COLAB:
+    for i in colab_requirements:
+        run_subprocess_command(i)
